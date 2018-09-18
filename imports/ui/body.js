@@ -28,6 +28,7 @@ Template.body.events({
     const gender = target.genderSelect.value;
     const dob = target.dob.value;
 
+    
     EITS.insert({
       firstname, 
       surname, 
@@ -61,4 +62,20 @@ Template.body.events({
         EITS.remove(eitId[i]);
        }
    },
+
+   'click .updateButton':function(event){
+    var target = event.target;
+    var selectedEit = EITS.findOne({_id:this._id})
+    eitForm = document.querySelector('form')
+
+    eitForm.firstname.value = selectedEit.firstname;
+    eitForm.surname.value = selectedEit.surname;
+    eitForm.genderSelect.value = selectedEit.gender;
+    eitForm.dob.value = selectedEit.dob;
+    
+    //  target.firstname.value=eitId.eitEntryId;
+    //  target.surname.value=eitId.eitEntryId;
+    //  target.genderSelect.value=eitId.eitEntryId;
+    //  target.dob.value=eitId.eitEntryId;
+  },
 });
