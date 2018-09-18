@@ -1,0 +1,70 @@
+header {
+  font-family: sans-serif;
+  padding: 20px 15px 15px 15px;
+  position: relative;
+  color: #00AFB5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 100%;
+  background: #F4FFFD;
+}
+
+body {
+  font-family: helvetica;
+  background-image: url(https://res.cloudinary.com/bekteema/image/upload/v1537111209/MEST%20EIT%20App/MEST-CT.jpg);
+  background-attachment: fixed;
+ 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ 
+  padding: 0;
+  margin: 0;
+ 
+  font-size: 14px;
+}
+
+#MEST-logo {
+  float:right;
+  margin: 0;
+  margin-right: 0;
+}
+
+h1 {
+  font-size: 2.75em;
+  margin: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.newEit input {
+  box-sizing: border-box;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding-right: 80px;
+  font-size: 1em;
+}
+
+.new-eit input:focus{
+  outline: 0.5;
+}
+
+label{
+  font-size: 1.25em;
+}
+select{
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding-right: 80px;
+  font-size: 1.2em;
+}
