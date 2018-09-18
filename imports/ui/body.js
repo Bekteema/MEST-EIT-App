@@ -28,15 +28,28 @@ Template.body.events({
     const gender = target.genderSelect.value;
     const dob = target.dob.value;
 
-    
-    EITS.insert({
-      firstname, 
-      surname, 
-      gender, 
-      dob, 
-      createdAt: new Date() // current time
-    });
-    
+    const id = target.id.value;
+
+    if(id){
+      // update
+      EITS.update(id,{$set:{
+        firstname, 
+        surname, 
+        gender, 
+        dob, 
+        createdAt: new Date() // current time
+      }
+      });
+    }else{
+      EITS.insert({
+        firstname, 
+        surname, 
+        gender, 
+        dob, 
+        createdAt: new Date() // current time
+      });
+    }
+
     //Clear the all the input forms
     target.firstname.value="";
     target.surname.value="";
@@ -72,10 +85,7 @@ Template.body.events({
     eitForm.surname.value = selectedEit.surname;
     eitForm.genderSelect.value = selectedEit.gender;
     eitForm.dob.value = selectedEit.dob;
-    
-    //  target.firstname.value=eitId.eitEntryId;
-    //  target.surname.value=eitId.eitEntryId;
-    //  target.genderSelect.value=eitId.eitEntryId;
-    //  target.dob.value=eitId.eitEntryId;
+
+    eitForm.id.value = this._id;
   },
 });
