@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
  
 import { EITS } from '../api/EITs.js';
-import './eitRecords';
+import './eitRecords.js';
 import './body.html';
 
 var eitId = [];
@@ -31,23 +31,23 @@ Template.body.events({
     const id = target.id.value;
 
     if(id){
-      // update
-      EITS.update(id,{$set:{
-        firstname, 
-        surname, 
-        gender, 
-        dob, 
-        createdAt: new Date() // current time
-      }
-      });
+      // update EIT record
+        Meteor.call('eits.update',id,{
+          firstname, 
+          surname, 
+          gender, 
+          dob, 
+          createdAt: new Date() // current time
+        });
     }else{
-      EITS.insert({
-        firstname, 
-        surname, 
-        gender, 
-        dob, 
-        createdAt: new Date() // current time
-      });
+      // insert new EIT
+      Meteor.call('eits.insert',{
+          firstname, 
+          surname, 
+          gender, 
+          dob, 
+          createdAt: new Date() // current time
+        });
     }
 
     //Clear the all the input forms
