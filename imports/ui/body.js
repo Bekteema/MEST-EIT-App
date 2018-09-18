@@ -3,7 +3,9 @@ import { Template } from 'meteor/templating';
 import { EITS } from '../api/EITs.js';
 import './eitRecords';
 import './body.html';
- 
+
+var eitId = [];
+
 Template.body.helpers({
   eits() {
       // Show newest EIT's at the top of the list
@@ -26,11 +28,6 @@ Template.body.events({
     const gender = target.genderSelect.value;
     const dob = target.dob.value;
 
-    // console.log(first`name);
-    // console.log(surname);
-    // console.log(gender);
-    // console.log(dob);`
-
     EITS.insert({
       firstname, 
       surname, 
@@ -46,4 +43,22 @@ Template.body.events({
     target.dob.value="";
 
   },
+
+  'click .toggle-checked' (event){
+    var target = event.target;
+    var eitEntryId = target.value;
+    if (target.checked === true){
+      eitId.push(eitEntryId);
+    }
+    else {
+      var index = eitId.indexOf(eitEntryId);
+      eitId.splice(index,1);
+    }
+  },
+    
+  'click .deleteButton':function(event){        
+      for(var i = 0; i<eitId.length; i++){
+        EITS.remove(eitId[i]);
+       }
+   },
 });
