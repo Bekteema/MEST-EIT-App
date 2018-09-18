@@ -10,14 +10,17 @@
         <label>Surname: </label><input type="text" placeholder="Type EIT surname" id="surname"/>
 
         <label>Gender: </label>
-            <p></p><select id="genderSelect">
+            <p></p>
+            <select id="genderSelect">
                 <option disabled="disabled" selected="selected">Please Select</option> 
                 {{#each categories}}
                     <option value="{{this}}">{{this}}</option>
                 {{/each}}
-            </select><p></p>
+            </select>
+            <p></p>
 
         <label>Date of Birth: </label><input type="date" placeholder="DOB" id="dob"/>
+        <label>Updaye: </label>
 
         <button class="submitButton" type="submit">Submit</button>
 
@@ -30,6 +33,7 @@
         <th>Surname</th>
         <th>Gender</th>
         <th>Date of Birth</th>
+        <th>Update</th>
       </thead>
 
     <tbody>
@@ -40,7 +44,7 @@
   </table>
 
     <p></p>
-    
+
     <button class="deleteButton">Delete</button>
 
   </div>
