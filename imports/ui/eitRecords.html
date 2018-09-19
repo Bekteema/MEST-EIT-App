@@ -1,13 +1,18 @@
 <template name="eitdetails">
  
  <tr>
+    {{#if currentUser}}
     <input type="checkbox" value="{{_id}}" class="toggle-checked" />
-    
+    {{/if}}
+
     <td>{{firstname}}</td>
     <td>{{surname}}</td>  
     <td>{{gender}}</td> 
     <td>{{dob}}</td>
+
+    {{#if currentUser}}
     <button value="{{_id}}" class='updateButton' >Update</button>
+    {{/if}}
     
 </tr>
 

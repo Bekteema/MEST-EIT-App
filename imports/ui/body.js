@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
  
 import { EITS } from '../api/EITs.js';
@@ -37,7 +38,9 @@ Template.body.events({
           surname, 
           gender, 
           dob, 
-          createdAt: new Date() // current time
+          createdAt: new Date(), // current time
+          owner: Meteor.userId(),
+          username: Meteor.user().username,
         });
     }else{
       // insert new EIT
@@ -46,7 +49,9 @@ Template.body.events({
           surname, 
           gender, 
           dob, 
-          createdAt: new Date() // current time
+          createdAt: new Date(), // current time
+          owner: Meteor.userId(),
+          username: Meteor.user().username,
         });
     }
 
@@ -70,16 +75,16 @@ Template.body.events({
     }
   },
     
-  'click .deleteButton':function(event){        
+  'click .deleteButton'(event){        
       for(var i = 0; i<eitId.length; i++){
-        EITS.remove(eitId[i]);
-       }
+        Meteor.call('eits.remove',eitId[i]);
+      }
    },
 
-   'click .updateButton':function(event){
+   'click .updateButton'(event){
     var target = event.target;
-    var selectedEit = EITS.findOne({_id:this._id})
-    eitForm = document.querySelector('form')
+    var selectedEit = EITS.findOne({_id:this._id});
+    eitForm = document.querySelector('form');
 
     eitForm.firstname.value = selectedEit.firstname;
     eitForm.surname.value = selectedEit.surname;

@@ -3,7 +3,13 @@
     <header>
       <h1>MEST EIT Management App</h1>
       <a href="https://www.meltwater.org" target="_blank"><img src="https://res-console.cloudinary.com/bekteema/thumbnails/v1/image/upload/v1537111201/TUVTVCBFSVQgQXBwL01FU1QtbG9nbw==/grid" id="MEST-logo" alt="MEST Logo" length=400px width=75px></a>
-       
+      
+      {{currentUser.username}}
+      {{> loginButtons}}
+
+      <p></p>
+      
+      {{#if currentUser}}
       <form class="newEit">
         <label>Name: </label><input type="text" placeholder="Type EIT first name" id="firstname"/>
 
@@ -26,15 +32,22 @@
         <button class="submitButton" type="submit">Submit</button>
 
       </form>
+      {{/if}}
+
     </header>
     <table>
       <thead>
+        {{#if currentUser}}
         <th>Select EIT</th>
+        {{/if}}
         <th>Name</th>
         <th>Surname</th>
         <th>Gender</th>
         <th>Date of Birth</th>
+        {{#if currentUser}}
         <th>Update</th>
+        {{/if}}
+
       </thead>
 
     <tbody>
@@ -46,7 +59,9 @@
 
     <p></p>
 
+    {{#if currentUser}}
     <button class="deleteButton">Delete</button>
+    {{/if}}
 
   </div>
 </body>
